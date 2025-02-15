@@ -1,3 +1,5 @@
+import 'package:chitchat/core/routing/routes.dart';
+import 'package:chitchat/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,6 +9,9 @@ class MessageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        context.pushNamed(Routes.chatScreen);
+      },
       contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
       leading: CircleAvatar(
         radius: 30,

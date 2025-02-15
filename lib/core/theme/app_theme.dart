@@ -6,6 +6,11 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.white,
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      color: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+    ),
     scaffoldBackgroundColor: Color(0xFF1B202D),
     textTheme: TextTheme(
       titleMedium: GoogleFonts.alegreyaSans(
@@ -34,6 +39,11 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.black,
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      color: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+    ),
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       titleMedium: GoogleFonts.alegreyaSans(
