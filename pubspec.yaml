@@ -19,8 +19,8 @@ dependencies:
   json_annotation: ^4.9.0
   dio: ^5.8.0+1
   shared_preferences: ^2.5.2
-  flutter_secure_storage: ^4.2.1
   pretty_dio_logger: ^1.4.0
+  flutter_secure_storage: ^9.2.4
 
 
 dev_dependencies:

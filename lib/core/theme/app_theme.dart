@@ -17,7 +17,7 @@ class AppTheme {
         color: Colors.white,
       ),
       bodySmall: GoogleFonts.alegreyaSans(
-        fontSize: FontSize.standardUp,
+        fontSize: FontSize.small,
         color: Colors.white,
       ),
       bodyMedium: GoogleFonts.alegreyaSans(

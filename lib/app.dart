@@ -1,3 +1,6 @@
+import 'package:chitchat/core/routing/app_router.dart';
+import 'package:chitchat/core/routing/routes.dart';
+import 'package:chitchat/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,13 +17,10 @@ class ChitChatApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'First Method',
-          // You can use the library anywhere in the app even in theme
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-          ),
-          home: child,
+          theme: AppTheme.darkTheme,
+          onGenerateRoute: AppRouter().onGenerateRoute,
+          navigatorKey: AppRouter.navigatorKey,
+          initialRoute: Routes.messagesScreen,
         );
       },
     );
