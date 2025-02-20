@@ -6,21 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-class RegisterScreenBody extends StatefulWidget {
-  const RegisterScreenBody({super.key});
+class LoginScreenBody extends StatefulWidget {
+  const LoginScreenBody({super.key});
 
   @override
-  State<RegisterScreenBody> createState() => _RegisterScreenBodyState();
+  State<LoginScreenBody> createState() => _LoginScreenBodyState();
 }
 
-class _RegisterScreenBodyState extends State<RegisterScreenBody> {
-  final TextEditingController _usernameController = TextEditingController();
+class _LoginScreenBodyState extends State<LoginScreenBody> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   void dispose() {
-    _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -37,22 +35,10 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
           children: [
             SizedBox(height: 50.h),
             Text(
-              'Sign up now and start chatting!',
-              style: Theme.of(context).textTheme.titleLarge,
+              'Welcome back! \n Enter your details below and start chatting instantly!',
+              style: Theme.of(context).textTheme.titleSmall,
             ),
             SizedBox(height: 30.h),
-            AppTextFormField(
-              controller: _usernameController,
-              hintText: "Username",
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(
-                    errorText: 'This field is required'),
-                FormBuilderValidators.minLength(6,
-                    errorText: 'Username must be at least 6 characters long'),
-              ]),
-              prefixIcon: Icon(Icons.person),
-            ),
-            SizedBox(height: 10.h),
             AppTextFormField(
               controller: _emailController,
               hintText: "Email",
@@ -70,7 +56,7 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
             ),
             SizedBox(height: 20.h),
             AppTextButton(
-              text: 'Sign up',
+              text: 'login',
               onPressed: () {
                 if (_formKey.currentState!.validate()) {}
               },
@@ -78,8 +64,8 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
             SizedBox(height: 10.h),
             Center(
               child: HaveOrDontHaveAccount(
-                  text1: 'Already have an account? ',
-                  text2: " Login",
+                  text1: "Don't have an account?",
+                  text2: " Register",
                   onTap: () {}),
             )
           ],
