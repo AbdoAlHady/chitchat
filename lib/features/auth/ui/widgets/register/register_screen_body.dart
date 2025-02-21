@@ -69,12 +69,7 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
               passwordController: _passwordController,
             ),
             SizedBox(height: 20.h),
-            AppTextButton(
-              text: 'Sign up',
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {}
-              },
-            ),
+            // RegisterBlocConsumer(formKey: _formKey),
             SizedBox(height: 10.h),
             Center(
               child: HaveOrDontHaveAccount(
@@ -85,6 +80,30 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class RegisterBlocConsumer extends StatelessWidget {
+  const RegisterBlocConsumer({
+    super.key,
+    required GlobalKey<FormState> formKey,
+    required this.usernameController,
+    required this.emailController,
+    required this.passwordController,
+  }) : _formKey = formKey;
+
+  final GlobalKey<FormState> _formKey;
+  final TextEditingController usernameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  @override
+  Widget build(BuildContext context) {
+    return AppTextButton(
+      text: 'Sign up',
+      onPressed: () {
+        if (_formKey.currentState!.validate()) {}
+      },
     );
   }
 }
