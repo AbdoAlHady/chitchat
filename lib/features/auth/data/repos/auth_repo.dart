@@ -7,7 +7,10 @@ import 'package:chitchat/features/auth/data/models/register_response.dart';
 import 'package:dartz/dartz.dart';
 
 class AuthRepo {
-  late final AuthDatasource _authDatasource;
+  final AuthDatasource _authDatasource;
+
+  AuthRepo({required AuthDatasource authDatasource})
+      : _authDatasource = authDatasource;
 
   Future<Either<Failure, RegisterResponse>> register(
       RegisterRequestBody registerRequestBody) async {
