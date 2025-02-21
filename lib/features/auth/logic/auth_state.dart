@@ -1,23 +1,35 @@
-import 'package:chitchat/core/enums/state_type.dart';
-import 'package:chitchat/features/auth/data/models/register_request_body.dart';
-import 'package:chitchat/features/auth/data/repos/auth_repo.dart';
-import 'package:chitchat/features/auth/logic/auth_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:chitchat/features/auth/data/models/register_response.dart';
+import 'package:equatable/equatable.dart';
 
-class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this._repo) : super(AuthState());
-  final AuthRepo _repo;
+import '../../../core/enums/state_type.dart';
 
-  // Register the user
-  void register(RegisterRequestBody registerRequestBody) async {
-    emit(state.copyWith(registerState: StateType.loading));
+class AuthState extends Equatable {
+  final StateType? registerState;
+  final String? errorMessage;
+  final String? email;
+  final RegisterResponse? registerResponse;
 
-    final result = await _repo.register(registerRequestBody);
-    result.fold(
-      (failure) => emit(state.copyWith(
-          registerState: StateType.error, errorMessage: failure.message)),
-      (response) => emit(state.copyWith(
-          registerState: StateType.success, registerResponse: response)),
+  const AuthState(
+      {this.registerState = StateType.initial,
+      this.errorMessage = "",
+      this.email = "",
+      this.registerResponse});
+
+  @override
+  List<Object?> get props =>
+      [registerState, errorMessage, email, registerResponse];
+
+  AuthState copyWith({
+    StateType? registerState,
+    String? errorMessage,
+    String? email,
+    RegisterResponse? registerResponse,
+  }) {
+    return AuthState(
+      registerState: registerState ?? registerState,
+      errorMessage: errorMessage ?? this.errorMessage,
+      email: email ?? this.email,
+      registerResponse: registerResponse ?? this.registerResponse,
     );
   }
 }

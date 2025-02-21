@@ -22,10 +22,10 @@ class DioFactory {
     }
   }
 
-  static void setupHeaders() {
+  static void setupHeaders() async {
     dio!.options.headers = {
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ${CacheHelper.getData(PrefsKeys.token) ?? ""}',
+      'Authorization':
+          'Bearer ${await CacheHelper.getSecuredString(PrefsKeys.token) ?? ""}',
     };
   }
 

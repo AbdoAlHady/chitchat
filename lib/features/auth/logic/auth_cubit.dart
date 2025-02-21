@@ -1,35 +1,42 @@
-import 'package:chitchat/features/auth/data/models/register_response.dart';
-import 'package:equatable/equatable.dart';
+import 'package:chitchat/core/enums/state_type.dart';
+import 'package:chitchat/features/auth/data/models/register_request_body.dart';
+import 'package:chitchat/features/auth/data/repos/auth_repo.dart';
+import 'package:chitchat/features/auth/logic/auth_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/enums/state_type.dart';
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit(this._repo) : super(AuthState());
+  final AuthRepo _repo;
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final registerFormKey = GlobalKey<FormState>();
 
-class AuthState extends Equatable {
-  final StateType? registerState;
-  final String? errorMessage;
-  final String? email;
-  final RegisterResponse? registerResponse;
-
-  const AuthState(
-      {this.registerState = StateType.initial,
-      this.errorMessage = "",
-      this.email = "",
-      this.registerResponse});
+  // Register the user
+  void register() async {
+    emit(state.copyWith(registerState: StateType.loading));
+    final result = await _repo.register(RegisterRequestBody(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+        userName: usernameController.text.trim().toString()));
+    result.fold(
+      (failure) => emit(state.copyWith(
+          registerState: StateType.error,
+          errorMessage: failure.message,
+          registerResponse: null)),
+      (response) => emit(state.copyWith(
+          registerState: StateType.success,
+          registerResponse: response,
+          errorMessage: null)),
+    );
+  }
 
   @override
-  List<Object?> get props =>
-      [registerState, errorMessage, email, registerResponse];
-
-  AuthState copyWith({
-    StateType? registerState,
-    String? errorMessage,
-    String? email,
-    RegisterResponse? registerResponse,
-  }) {
-    return AuthState(
-      registerState: registerState ?? registerState,
-      errorMessage: errorMessage ?? this.errorMessage,
-      email: email ?? this.email,
-      registerResponse: registerResponse ?? this.registerResponse,
-    );
+  Future<void> close() {
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

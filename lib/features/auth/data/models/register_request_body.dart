@@ -14,6 +14,5 @@ class RegisterRequestBody {
     required this.userName,
   });
 
-  factory RegisterRequestBody.fromJson(Map<String, dynamic> json) =>
-      _$RegisterRequestBodyFromJson(json);
+  Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
 }
