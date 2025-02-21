@@ -1,4 +1,4 @@
-import 'package:chitchat/features/auth/presentation/widgets/register/register_screen_body.dart';
+import 'package:chitchat/features/auth/ui/widgets/register/register_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {

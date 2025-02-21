@@ -1,6 +1,6 @@
 import 'package:chitchat/core/routing/routes.dart';
-import 'package:chitchat/features/auth/presentation/screens/login_screen.dart';
-import 'package:chitchat/features/auth/presentation/screens/register_screen.dart';
+import 'package:chitchat/features/auth/ui/screens/login_screen.dart';
+import 'package:chitchat/features/auth/ui/screens/register_screen.dart';
 import 'package:chitchat/features/chat/presentation/chat_screen.dart';
 import 'package:chitchat/features/messages/presentations/messages_screen.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'package:chitchat/core/widgets/app_text_button.dart';
 import 'package:chitchat/core/widgets/app_text_form_field.dart';
 import 'package:chitchat/core/widgets/password_text_form.dart';
-import 'package:chitchat/features/auth/presentation/widgets/have_or_dont_have_account.dart';
+import 'package:chitchat/features/auth/ui/widgets/have_or_dont_have_account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
