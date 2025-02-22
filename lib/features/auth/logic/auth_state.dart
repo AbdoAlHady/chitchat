@@ -6,30 +6,33 @@ import '../../../core/enums/state_type.dart';
 class AuthState extends Equatable {
   final StateType? registerState;
   final String? errorMessage;
-  final String? email;
   final MessageResponse? registerResponse;
+  final StateType? verifyEmailState;
+  final MessageResponse? verifyEmailResponse;
 
   const AuthState(
       {this.registerState = StateType.initial,
       this.errorMessage = "",
-      this.email = "",
+      this.verifyEmailResponse,
+      this.verifyEmailState = StateType.initial,
       this.registerResponse});
 
   @override
-  List<Object?> get props =>
-      [registerState, errorMessage, email, registerResponse];
+  List<Object?> get props => [registerState, errorMessage, registerResponse];
 
   AuthState copyWith({
     StateType? registerState,
     String? errorMessage,
-    String? email,
+    StateType? verifyEmailState,
+    MessageResponse? verifyEmailResponse,
     MessageResponse? registerResponse,
   }) {
     return AuthState(
       registerState: registerState ?? registerState,
       errorMessage: errorMessage ?? this.errorMessage,
-      email: email ?? this.email,
       registerResponse: registerResponse ?? this.registerResponse,
+      verifyEmailState: verifyEmailState ?? this.verifyEmailState,
+      verifyEmailResponse: verifyEmailResponse ?? this.verifyEmailResponse,
     );
   }
 }
