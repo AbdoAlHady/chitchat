@@ -56,7 +56,8 @@ class _ApiService implements ApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {'verifyEmailRequestBody': verifyEmailRequestBody};
+    final _data = <String, dynamic>{};
+    _data.addAll(verifyEmailRequestBody.toJson());
     final _options = _setStreamType<MessageResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

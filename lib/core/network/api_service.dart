@@ -17,6 +17,6 @@ abstract class ApiService {
 
   @POST(ApiConstants.verifyEmail)
   Future<MessageResponse> verifyEmail(
-    @Field() VerifyEmailRequestBody verifyEmailRequestBody,
+    @Body() VerifyEmailRequestBody verifyEmailRequestBody,
   );
 }

@@ -19,12 +19,12 @@ class RegisterBlocConsumer extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.registerState == StateType.error) {
-          context.pushNamed(Routes.verifyEmailScreen, arguments: state.email);
           showToast(
               context: context,
               message: state.errorMessage!,
               type: ToastType.error);
         } else if (state.registerState == StateType.success) {
+          context.pushNamed(Routes.verifyEmailScreen, arguments: state.email);
           showToast(
               context: context,
               message: state.registerResponse!.message,

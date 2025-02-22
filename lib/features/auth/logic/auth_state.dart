@@ -20,7 +20,14 @@ class AuthState extends Equatable {
       this.registerResponse});
 
   @override
-  List<Object?> get props => [registerState, errorMessage, registerResponse];
+  List<Object?> get props => [
+        registerState,
+        errorMessage,
+        registerResponse,
+        verifyEmailState,
+        email,
+        verifyEmailResponse,
+      ];
 
   AuthState copyWith({
     StateType? registerState,
@@ -31,7 +38,7 @@ class AuthState extends Equatable {
     MessageResponse? registerResponse,
   }) {
     return AuthState(
-      registerState: registerState ?? registerState,
+      registerState: registerState ?? this.registerState, // Fixed this line
       errorMessage: errorMessage ?? this.errorMessage,
       registerResponse: registerResponse ?? this.registerResponse,
       verifyEmailState: verifyEmailState ?? this.verifyEmailState,

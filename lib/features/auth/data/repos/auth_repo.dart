@@ -34,8 +34,8 @@ class AuthRepo {
       return Right(response);
     } on NetworkException catch (e) {
       return Left(NetworkFailure(message: e.message));
-    } catch (e) {
-      return Left(ServerFailure(message: e.toString()));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
     }
   }
 }

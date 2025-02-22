@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chitchat/core/enums/state_type.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
 import 'package:chitchat/features/auth/data/models/verify_email_request_body.dart';
@@ -38,18 +40,26 @@ class AuthCubit extends Cubit<AuthState> {
 
   // Verify the email
   void verifyEmail({required String email}) async {
-    emit(state.copyWith(verifyEmailState: StateType.loading));
+    emit(state.copyWith(
+      verifyEmailState: StateType.loading,
+      errorMessage: null,
+      verifyEmailResponse: null,
+      email: email, // Add this to ensure email is preserved in state
+    ));
+    log(email);
     final result = await _repo.verifyEmail(
         VerifyEmailRequestBody(email: email, code: codeController.text.trim()));
     result.fold(
       (failure) => emit(state.copyWith(
-          verifyEmailState: StateType.error,
-          errorMessage: failure.message,
-          verifyEmailResponse: null)),
+        verifyEmailState: StateType.error,
+        errorMessage: failure.message,
+        email: email, // Preserve email in error state
+      )),
       (response) => emit(state.copyWith(
-          verifyEmailState: StateType.success,
-          verifyEmailResponse: response,
-          errorMessage: null)),
+        verifyEmailState: StateType.success,
+        verifyEmailResponse: response,
+        email: email, // Preserve email in success state
+      )),
     );
   }
 
