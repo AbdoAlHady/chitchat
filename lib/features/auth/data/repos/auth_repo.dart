@@ -38,4 +38,17 @@ class AuthRepo {
       return Left(ServerFailure(message: e.message));
     }
   }
+
+  // Resend verification email
+  Future<Either<Failure, MessageResponse>> resendVerificationEmail(
+      String email) async {
+    try {
+      final response = await _authDatasource.resendVerificationEmail(email);
+      return Right(response);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(message: e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
 }
