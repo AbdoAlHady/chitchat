@@ -2,6 +2,8 @@ import 'package:chitchat/core/errors/exceptions.dart';
 import 'package:chitchat/core/errors/failure.dart';
 
 import 'package:chitchat/features/auth/data/datasource/auth_datasource.dart';
+import 'package:chitchat/features/auth/data/models/login_request_body.dart';
+import 'package:chitchat/features/auth/data/models/login_response.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
 import 'package:chitchat/features/auth/data/models/message_response.dart';
 import 'package:chitchat/features/auth/data/models/verify_email_request_body.dart';
@@ -22,6 +24,19 @@ class AuthRepo {
       return Left(NetworkFailure(message: e.message));
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  //Login
+  Future<Either<Failure, LoginResponse>> login(
+      LoginRequestBody loginRequestBody) async {
+    try {
+      final response = await _authDatasource.login(loginRequestBody);
+      return Right(response);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(message: e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
     }
   }
 
