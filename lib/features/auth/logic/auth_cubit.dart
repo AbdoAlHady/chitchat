@@ -63,6 +63,22 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  // Resend verification email
+  void resendVerificationEmail({required String email}) async {
+    emit(state.copyWith(resendVerificationEmailState: StateType.loading));
+    final result = await _repo.resendVerificationEmail(email);
+    result.fold(
+      (failure) => emit(state.copyWith(
+          resendVerificationEmailState: StateType.error,
+          errorMessage: failure.message,
+          resendVerificationEmailResponse: null)),
+      (response) => emit(state.copyWith(
+          resendVerificationEmailState: StateType.success,
+          resendVerificationEmailResponse: response,
+          errorMessage: null)),
+    );
+  }
+
   @override
   Future<void> close() {
     usernameController.dispose();
