@@ -1,3 +1,5 @@
+import 'package:chitchat/core/routing/routes.dart';
+import 'package:chitchat/core/utils/extensions.dart';
 import 'package:chitchat/core/widgets/app_text_form_field.dart';
 import 'package:chitchat/core/widgets/password_text_form.dart';
 import 'package:chitchat/features/auth/logic/auth_cubit.dart';
@@ -60,7 +62,9 @@ class RegisterScreenBody extends StatelessWidget {
               child: HaveOrDontHaveAccount(
                   text1: 'Already have an account? ',
                   text2: " Login",
-                  onTap: () {}),
+                  onTap: () {
+                    context.pushReplacementNamed(Routes.loginScreen);
+                  }),
             )
           ],
         ),

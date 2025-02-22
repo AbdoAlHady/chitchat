@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:chitchat/core/enums/state_type.dart';
+import 'package:chitchat/features/auth/data/models/login_request_body.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
 import 'package:chitchat/features/auth/data/models/verify_email_request_body.dart';
 import 'package:chitchat/features/auth/data/repos/auth_repo.dart';
@@ -17,6 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController codeController = TextEditingController();
   final verifyEmailFormKey = GlobalKey<FormState>();
   final registerFormKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
 
   // Register the user
   void register() async {
@@ -34,6 +36,29 @@ class AuthCubit extends Cubit<AuthState> {
           registerState: StateType.success,
           registerResponse: response,
           email: emailController.text.trim(),
+          errorMessage: null)),
+    );
+  }
+
+  // Login With Email and Password
+  void login() async {
+    emit(state.copyWith(loginState: StateType.loading));
+    final result = await _repo.login(LoginRequestBody(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim()));
+    result.fold(
+      (failure) {
+        log(failure.code.toString());
+        emit(state.copyWith(
+            loginState: StateType.error,
+            errorMessage: failure.message,
+            isEmailVerified: failure.code == 403 ? false : true,
+            loginResponse: null));
+      },
+      (response) => emit(state.copyWith(
+          loginState: StateType.success,
+          loginResponse: response,
+          isEmailVerified: true,
           errorMessage: null)),
     );
   }

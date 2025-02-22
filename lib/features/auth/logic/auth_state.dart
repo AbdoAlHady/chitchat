@@ -15,11 +15,13 @@ class AuthState extends Equatable {
   final StateType? resendVerificationEmailState;
   final StateType? loginState;
   final LoginResponse? loginResponse;
+  final bool? isEmailVerified;
 
   const AuthState(
       {this.registerState = StateType.initial,
       this.errorMessage = "",
       this.email,
+      this.isEmailVerified = true,
       this.loginState = StateType.initial,
       this.loginResponse,
       this.resendVerificationEmailResponse,
@@ -39,7 +41,8 @@ class AuthState extends Equatable {
         resendVerificationEmailResponse,
         resendVerificationEmailState,
         loginState,
-        loginResponse
+        loginResponse,
+        isEmailVerified
       ];
 
   AuthState copyWith({
@@ -53,6 +56,7 @@ class AuthState extends Equatable {
     MessageResponse? verifyEmailResponse,
     MessageResponse? registerResponse,
     LoginResponse? loginResponse,
+    bool? isEmailVerified,
   }) {
     return AuthState(
       registerState: registerState ?? this.registerState, // Fixed this line
@@ -67,6 +71,7 @@ class AuthState extends Equatable {
           resendVerificationEmailState ?? this.resendVerificationEmailState,
       loginState: loginState ?? this.loginState,
       loginResponse: loginResponse ?? this.loginResponse,
+      isEmailVerified: isEmailVerified ?? this.isEmailVerified,
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chitchat/core/errors/exceptions.dart';
 import 'package:chitchat/core/helper/connection_helper.dart';
 import 'package:chitchat/core/network/error_handler.dart';
@@ -80,7 +82,10 @@ class AuthDatasource {
     } on NetworkException {
       rethrow;
     } catch (e) {
-      throw ServerException(message: ErrorHandler.hanlde(e).message!);
+      log(ErrorHandler.hanlde(e).code.toString());
+      throw ServerException(
+          message: ErrorHandler.hanlde(e).message!,
+          code: ErrorHandler.hanlde(e).code);
     }
   }
 }

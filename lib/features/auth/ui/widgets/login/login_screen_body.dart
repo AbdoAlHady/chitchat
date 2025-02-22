@@ -1,37 +1,24 @@
 import 'package:chitchat/core/routing/routes.dart';
 import 'package:chitchat/core/utils/extensions.dart';
-import 'package:chitchat/core/widgets/app_text_button.dart';
 import 'package:chitchat/core/widgets/app_text_form_field.dart';
 import 'package:chitchat/core/widgets/password_text_form.dart';
+import 'package:chitchat/features/auth/logic/auth_cubit.dart';
 import 'package:chitchat/features/auth/ui/widgets/have_or_dont_have_account.dart';
+import 'package:chitchat/features/auth/ui/widgets/login/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-class LoginScreenBody extends StatefulWidget {
+class LoginScreenBody extends StatelessWidget {
   const LoginScreenBody({super.key});
-
-  @override
-  State<LoginScreenBody> createState() => _LoginScreenBodyState();
-}
-
-class _LoginScreenBodyState extends State<LoginScreenBody> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Form(
-        key: _formKey,
+        key: context.read<AuthCubit>().loginFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,7 +29,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
             ),
             SizedBox(height: 30.h),
             AppTextFormField(
-              controller: _emailController,
+              controller: context.read<AuthCubit>().emailController,
               hintText: "Email",
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(
@@ -54,15 +41,10 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
             ),
             SizedBox(height: 10.h),
             PasswordTextFrom(
-              passwordController: _passwordController,
+              passwordController: context.read<AuthCubit>().passwordController,
             ),
             SizedBox(height: 20.h),
-            AppTextButton(
-              text: 'login',
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {}
-              },
-            ),
+            LoginButton(),
             SizedBox(height: 10.h),
             Center(
               child: HaveOrDontHaveAccount(
