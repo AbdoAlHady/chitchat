@@ -31,6 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
       (response) => emit(state.copyWith(
           registerState: StateType.success,
           registerResponse: response,
+          email: emailController.text.trim(),
           errorMessage: null)),
     );
   }

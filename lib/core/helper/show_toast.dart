@@ -14,7 +14,7 @@ void showToast(
   DelightToastBar(
     autoDismiss: true,
     position: DelightSnackbarPosition.bottom,
-    snackbarDuration: Duration(seconds: second ?? 3),
+    snackbarDuration: Duration(seconds: second ?? 5),
     builder: (context) {
       return ToastCard(
         title: Text(

@@ -10,6 +10,7 @@ class AppRouter {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   Route? onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.messagesScreen:
         return MaterialPageRoute(builder: (_) => MessagesScreen());
@@ -20,7 +21,10 @@ class AppRouter {
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.verifyEmailScreen:
-        return MaterialPageRoute(builder: (_) => VerifyEmailScreen());
+        return MaterialPageRoute(
+            builder: (_) => VerifyEmailScreen(
+                  email: args as String,
+                ));
       default:
         return null;
     }
