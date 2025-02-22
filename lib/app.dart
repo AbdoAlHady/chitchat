@@ -20,7 +20,7 @@ class ChitChatApp extends StatelessWidget {
           theme: AppTheme.darkTheme,
           onGenerateRoute: AppRouter().onGenerateRoute,
           navigatorKey: AppRouter.navigatorKey,
-          initialRoute: Routes.loginScreen,
+          initialRoute: Routes.verifyEmailScreen,
         );
       },
     );
