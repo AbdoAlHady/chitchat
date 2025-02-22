@@ -1,6 +1,7 @@
 import 'package:chitchat/core/network/api_constants.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
 import 'package:chitchat/features/auth/data/models/message_response.dart';
+import 'package:chitchat/features/auth/data/models/resend_email_verification_request_body.dart';
 import 'package:chitchat/features/auth/data/models/verify_email_request_body.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -18,5 +19,11 @@ abstract class ApiService {
   @POST(ApiConstants.verifyEmail)
   Future<MessageResponse> verifyEmail(
     @Body() VerifyEmailRequestBody verifyEmailRequestBody,
+  );
+
+  @POST(ApiConstants.resendEmailVerificationCode)
+  Future<MessageResponse> resendEmailVerificationCode(
+    @Body()
+    ResendEmailVerificationRequestBody resendEmailVerificationRequestBody,
   );
 }
