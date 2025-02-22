@@ -1,4 +1,4 @@
-import 'package:chitchat/features/auth/data/models/register_response.dart';
+import 'package:chitchat/features/auth/data/models/message_response.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../core/enums/state_type.dart';
@@ -7,7 +7,7 @@ class AuthState extends Equatable {
   final StateType? registerState;
   final String? errorMessage;
   final String? email;
-  final RegisterResponse? registerResponse;
+  final MessageResponse? registerResponse;
 
   const AuthState(
       {this.registerState = StateType.initial,
@@ -23,7 +23,7 @@ class AuthState extends Equatable {
     StateType? registerState,
     String? errorMessage,
     String? email,
-    RegisterResponse? registerResponse,
+    MessageResponse? registerResponse,
   }) {
     return AuthState(
       registerState: registerState ?? registerState,

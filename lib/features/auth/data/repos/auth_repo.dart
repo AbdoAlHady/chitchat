@@ -3,7 +3,7 @@ import 'package:chitchat/core/errors/failure.dart';
 
 import 'package:chitchat/features/auth/data/datasource/auth_datasource.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
-import 'package:chitchat/features/auth/data/models/register_response.dart';
+import 'package:chitchat/features/auth/data/models/message_response.dart';
 import 'package:dartz/dartz.dart';
 
 class AuthRepo {
@@ -12,7 +12,7 @@ class AuthRepo {
   AuthRepo({required AuthDatasource authDatasource})
       : _authDatasource = authDatasource;
 
-  Future<Either<Failure, RegisterResponse>> register(
+  Future<Either<Failure, MessageResponse>> register(
       RegisterRequestBody registerRequestBody) async {
     try {
       final response = await _authDatasource.register(registerRequestBody);

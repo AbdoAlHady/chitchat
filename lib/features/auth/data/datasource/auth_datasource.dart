@@ -2,7 +2,7 @@ import 'package:chitchat/core/errors/exceptions.dart';
 import 'package:chitchat/core/helper/connection_helper.dart';
 import 'package:chitchat/core/network/error_handler.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
-import 'package:chitchat/features/auth/data/models/register_response.dart';
+import 'package:chitchat/features/auth/data/models/message_response.dart';
 
 import '../../../../core/network/api_service.dart';
 
@@ -11,7 +11,7 @@ class AuthDatasource {
 
   AuthDatasource({required ApiService apiService}) : _apiService = apiService;
 
-  Future<RegisterResponse> register(
+  Future<MessageResponse> register(
       RegisterRequestBody registerRequestBody) async {
     try {
       final isConnected = await ConnectionHelper().checkInternetConnection();
