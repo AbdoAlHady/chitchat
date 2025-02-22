@@ -3,4 +3,6 @@ abstract class ApiConstants {
   static const String login = "auth/login";
   static const String register = "auth/register";
   static const String verifyEmail = "auth/verify-email";
+  static const String resendEmailVerificationCode =
+      "auth/resend-email-verification";
 }
