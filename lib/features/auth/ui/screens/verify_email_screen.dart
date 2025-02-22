@@ -14,8 +14,10 @@ class VerifyEmailScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthCubit(sl<AuthRepo>()),
       child: Scaffold(
-        body: VerifyEmailBody(
-          email: email,
+        body: SafeArea(
+          child: VerifyEmailBody(
+            email: email,
+          ),
         ),
       ),
     );

@@ -58,6 +58,7 @@ class AuthCubit extends Cubit<AuthState> {
       (response) => emit(state.copyWith(
         verifyEmailState: StateType.success,
         verifyEmailResponse: response,
+        errorMessage: null,
         email: email, // Preserve email in success state
       )),
     );
@@ -65,7 +66,10 @@ class AuthCubit extends Cubit<AuthState> {
 
   // Resend verification email
   void resendVerificationEmail({required String email}) async {
-    emit(state.copyWith(resendVerificationEmailState: StateType.loading));
+    emit(state.copyWith(
+        resendVerificationEmailState: StateType.loading,
+        errorMessage: null,
+        resendVerificationEmailResponse: null));
     final result = await _repo.resendVerificationEmail(email);
     result.fold(
       (failure) => emit(state.copyWith(

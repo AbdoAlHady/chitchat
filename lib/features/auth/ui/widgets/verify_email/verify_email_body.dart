@@ -1,5 +1,6 @@
 import 'package:chitchat/core/helper/helper_functions.dart';
 import 'package:chitchat/features/auth/ui/widgets/verify_email/resend_code.dart';
+import 'package:chitchat/features/auth/ui/widgets/verify_email/resend_email_bloc_listener.dart';
 import 'package:chitchat/features/auth/ui/widgets/verify_email/verify_email_bloc_consumer.dart';
 import 'package:chitchat/features/auth/ui/widgets/verify_email/verify_email_pin_code.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,6 @@ class VerifyEmailBody extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleSmall,
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 10.h),
               Text(
                 maskEmail(email: email),
                 style: Theme.of(context).textTheme.titleSmall,
@@ -37,7 +37,8 @@ class VerifyEmailBody extends StatelessWidget {
               ),
               VerifyEmailPinCode(email: email),
               ResendCode(email: email),
-              VerifyEmailBlocConsumer()
+              VerifyEmailBlocConsumer(),
+              ResendEmailBlocListener(),
             ],
           ),
         ),

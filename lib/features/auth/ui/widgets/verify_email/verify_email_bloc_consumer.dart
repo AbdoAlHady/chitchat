@@ -14,6 +14,13 @@ class VerifyEmailBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
+      listenWhen: (previous, current) =>
+          previous.verifyEmailState != current.verifyEmailState,
+      buildWhen: (previous, current) {
+        return previous.verifyEmailState != current.verifyEmailState ||
+            previous.resendVerificationEmailState !=
+                current.resendVerificationEmailState;
+      },
       listener: (context, state) {
         if (state.verifyEmailState == StateType.success) {
           showToast(

@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../logic/auth_cubit.dart';
 
 class ResendCode extends StatefulWidget {
   const ResendCode({super.key, required this.email});
@@ -61,6 +64,10 @@ class _ResendCodeState extends State<ResendCode> {
                 onPressed: () {
                   if (_isButtonEnabled) {
                     startTimer();
+                    // Resend email verification code
+                    context.read<AuthCubit>().resendVerificationEmail(
+                          email: widget.email,
+                        );
                   }
                 },
                 child: Text('Resend'),
