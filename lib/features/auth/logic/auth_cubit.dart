@@ -37,10 +37,10 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   // Verify the email
-  void verifyEmail() async {
+  void verifyEmail({required String email}) async {
     emit(state.copyWith(verifyEmailState: StateType.loading));
-    final result = await _repo.verifyEmail(VerifyEmailRequestBody(
-        email: emailController.text.trim(), code: codeController.text.trim()));
+    final result = await _repo.verifyEmail(
+        VerifyEmailRequestBody(email: email, code: codeController.text.trim()));
     result.fold(
       (failure) => emit(state.copyWith(
           verifyEmailState: StateType.error,
@@ -58,6 +58,7 @@ class AuthCubit extends Cubit<AuthState> {
     usernameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    codeController.dispose();
     return super.close();
   }
 }

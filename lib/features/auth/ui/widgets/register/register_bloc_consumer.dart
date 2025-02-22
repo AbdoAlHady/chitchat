@@ -1,5 +1,7 @@
 import 'package:chitchat/core/enums/state_type.dart';
 import 'package:chitchat/core/helper/show_toast.dart';
+import 'package:chitchat/core/routing/routes.dart';
+import 'package:chitchat/core/utils/extensions.dart';
 import 'package:chitchat/core/widgets/app_text_button.dart';
 import 'package:chitchat/core/widgets/loading_widget.dart';
 import 'package:chitchat/features/auth/logic/auth_cubit.dart';
@@ -17,6 +19,7 @@ class RegisterBlocConsumer extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.registerState == StateType.error) {
+          context.pushNamed(Routes.verifyEmailScreen, arguments: state.email);
           showToast(
               context: context,
               message: state.errorMessage!,

@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class ResendCode extends StatefulWidget {
-  const ResendCode({super.key});
+  const ResendCode({super.key, required this.email});
+  final String email;
 
   @override
   State<ResendCode> createState() => _ResendCodeState();
