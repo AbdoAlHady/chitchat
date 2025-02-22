@@ -1,3 +1,4 @@
+import 'package:chitchat/features/auth/data/models/login_response.dart';
 import 'package:chitchat/features/auth/data/models/message_response.dart';
 import 'package:equatable/equatable.dart';
 
@@ -12,11 +13,15 @@ class AuthState extends Equatable {
   final MessageResponse? verifyEmailResponse;
   final MessageResponse? resendVerificationEmailResponse;
   final StateType? resendVerificationEmailState;
+  final StateType? loginState;
+  final LoginResponse? loginResponse;
 
   const AuthState(
       {this.registerState = StateType.initial,
       this.errorMessage = "",
       this.email,
+      this.loginState = StateType.initial,
+      this.loginResponse,
       this.resendVerificationEmailResponse,
       this.resendVerificationEmailState = StateType.initial,
       this.verifyEmailResponse,
@@ -32,7 +37,9 @@ class AuthState extends Equatable {
         email,
         verifyEmailResponse,
         resendVerificationEmailResponse,
-        resendVerificationEmailState
+        resendVerificationEmailState,
+        loginState,
+        loginResponse
       ];
 
   AuthState copyWith({
@@ -41,9 +48,11 @@ class AuthState extends Equatable {
     StateType? verifyEmailState,
     String? email,
     StateType? resendVerificationEmailState,
+    StateType? loginState,
     MessageResponse? resendVerificationEmailResponse,
     MessageResponse? verifyEmailResponse,
     MessageResponse? registerResponse,
+    LoginResponse? loginResponse,
   }) {
     return AuthState(
       registerState: registerState ?? this.registerState, // Fixed this line
@@ -56,6 +65,8 @@ class AuthState extends Equatable {
           this.resendVerificationEmailResponse,
       resendVerificationEmailState:
           resendVerificationEmailState ?? this.resendVerificationEmailState,
+      loginState: loginState ?? this.loginState,
+      loginResponse: loginResponse ?? this.loginResponse,
     );
   }
 }
