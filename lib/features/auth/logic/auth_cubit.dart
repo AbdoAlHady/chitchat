@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:chitchat/core/enums/state_type.dart';
+import 'package:chitchat/core/network/dio_factroy.dart';
 import 'package:chitchat/features/auth/data/models/login_request_body.dart';
 import 'package:chitchat/features/auth/data/models/register_request_body.dart';
 import 'package:chitchat/features/auth/data/models/verify_email_request_body.dart';
@@ -55,11 +56,14 @@ class AuthCubit extends Cubit<AuthState> {
             isEmailVerified: failure.code == 403 ? false : true,
             loginResponse: null));
       },
-      (response) => emit(state.copyWith(
-          loginState: StateType.success,
-          loginResponse: response,
-          isEmailVerified: true,
-          errorMessage: null)),
+      (response) => {
+        DioFactory.setTokenIntoHeaderAfterLogin(response.token),
+        emit(state.copyWith(
+            loginState: StateType.success,
+            loginResponse: response,
+            isEmailVerified: true,
+            errorMessage: null)),
+      },
     );
   }
 

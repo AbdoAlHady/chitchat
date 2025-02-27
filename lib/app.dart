@@ -1,7 +1,6 @@
 import 'package:chitchat/core/routing/app_router.dart';
 import 'package:chitchat/core/routing/routes.dart';
 import 'package:chitchat/core/theme/app_theme.dart';
-import 'package:chitchat/core/utils/cache_helper.dart';
 import 'package:chitchat/core/utils/prefs_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,17 +21,10 @@ class ChitChatApp extends StatelessWidget {
           theme: AppTheme.darkTheme,
           onGenerateRoute: AppRouter().onGenerateRoute,
           navigatorKey: AppRouter.navigatorKey,
-          initialRoute: _returnInitialRoute(),
+          initialRoute:
+              isLoggedInUser ? Routes.messagesScreen : Routes.loginScreen,
         );
       },
     );
-  }
-
-  String? _returnInitialRoute() {
-    if (CacheHelper.getSecuredString(PrefsKeys.token) != null) {
-      return Routes.messagesScreen;
-    } else {
-      return Routes.loginScreen;
-    }
   }
 }
