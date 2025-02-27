@@ -2,6 +2,8 @@ import 'package:chitchat/core/network/api_service.dart';
 import 'package:chitchat/core/network/dio_factroy.dart';
 import 'package:chitchat/features/auth/data/datasource/auth_datasource.dart';
 import 'package:chitchat/features/auth/data/repos/auth_repo.dart';
+import 'package:chitchat/features/messages/data/data_source/conversation_datasource.dart';
+import 'package:chitchat/features/messages/data/repos/conversation_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -16,4 +18,10 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton<AuthDatasource>(
       () => AuthDatasource(apiService: sl()));
   sl.registerLazySingleton<AuthRepo>(() => AuthRepo(authDatasource: sl()));
+
+  // Conversations
+  sl.registerLazySingleton<ConversationDatasource>(
+      () => ConversationDatasource(sl()));
+  sl.registerLazySingleton<ConversationRepo>(
+      () => ConversationRepo(remoteDataSource: sl()));
 }
