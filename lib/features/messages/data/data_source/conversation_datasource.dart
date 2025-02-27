@@ -9,7 +9,7 @@ class ConversationDatasource {
 
   ConversationDatasource(this._service);
 
-  Future<ConversationModel> getAllConversations() async {
+  Future<List<ConversationModel>> getAllConversations() async {
     try {
       final isConnected = await ConnectionHelper().checkInternetConnection();
       if (!isConnected) {

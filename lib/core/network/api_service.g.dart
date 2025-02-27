@@ -138,12 +138,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ConversationModel> getAllConversations() async {
+  Future<List<ConversationModel>> getAllConversations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ConversationModel>(
+    final _options = _setStreamType<List<ConversationModel>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -153,10 +153,15 @@ class _ApiService implements ApiService {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ConversationModel _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<ConversationModel> _value;
     try {
-      _value = ConversationModel.fromJson(_result.data!);
+      _value = _result.data!
+          .map(
+            (dynamic i) =>
+                ConversationModel.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

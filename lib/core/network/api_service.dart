@@ -36,5 +36,5 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.conversations)
-  Future<ConversationModel> getAllConversations();
+  Future<List<ConversationModel>> getAllConversations();
 }
