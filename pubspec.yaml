@@ -30,6 +30,9 @@ dependencies:
   delightful_toast: ^1.1.0
   lottie: ^3.3.1
   pinput: ^5.0.1
+  skeletonizer: ^1.4.3
+  faker: ^2.2.0
+  intl: ^0.19.0
 
 
 dev_dependencies:

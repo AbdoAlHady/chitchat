@@ -17,8 +17,8 @@ void main() async {
 checkIfLoggedInUser() async {
   String? userToken = await CacheHelper.getSecuredString(PrefsKeys.token);
   if (userToken == null) {
-    isLoggedInUser = true;
-  } else {
     isLoggedInUser = false;
+  } else {
+    isLoggedInUser = true;
   }
 }

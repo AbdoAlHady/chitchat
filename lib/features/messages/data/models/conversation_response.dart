@@ -1,5 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'conversation_model.g.dart';
+part 'conversation_response.g.dart';
+
+@JsonSerializable()
+class ConversationResponse {
+  @JsonKey(name: 'data')
+  final List<ConversationModel> conversations;
+
+  ConversationResponse({required this.conversations});
+
+  factory ConversationResponse.fromJson(Map<String, dynamic> json) =>
+      _$ConversationResponseFromJson(json);
+}
 
 @JsonSerializable()
 class ConversationModel {

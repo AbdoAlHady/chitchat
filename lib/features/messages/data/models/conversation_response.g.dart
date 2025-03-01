@@ -1,10 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'conversation_model.dart';
+part of 'conversation_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+ConversationResponse _$ConversationResponseFromJson(
+        Map<String, dynamic> json) =>
+    ConversationResponse(
+      conversations: (json['data'] as List<dynamic>)
+          .map((e) => ConversationModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$ConversationResponseToJson(
+        ConversationResponse instance) =>
+    <String, dynamic>{
+      'data': instance.conversations,
+    };
 
 ConversationModel _$ConversationModelFromJson(Map<String, dynamic> json) =>
     ConversationModel(

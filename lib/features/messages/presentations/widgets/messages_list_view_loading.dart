@@ -1,14 +1,15 @@
+import 'package:chitchat/core/helper/dummy_data.dart';
 import 'package:chitchat/core/theme/app_colors.dart';
-import 'package:chitchat/features/messages/data/models/conversation_response.dart';
 import 'package:chitchat/features/messages/presentations/widgets/message_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
-class MessagesListViewItem extends StatelessWidget {
-  const MessagesListViewItem({super.key, required this.conversations});
-  final List<ConversationModel> conversations;
+class MessagesListViewLoading extends StatelessWidget {
+  const MessagesListViewLoading({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final conversationList = generateRandomConversations(10);
     return Expanded(
         child: Container(
       decoration: BoxDecoration(
@@ -18,10 +19,13 @@ class MessagesListViewItem extends StatelessWidget {
           topRight: Radius.circular(50),
         ),
       ),
-      child: ListView.builder(
-        itemCount: conversations.length,
-        itemBuilder: (context, index) => MessageTile(
-          conversation: conversations[index],
+      child: Skeletonizer(
+        enabled: true,
+        child: ListView.builder(
+          itemCount: conversationList.length,
+          itemBuilder: (context, index) => MessageTile(
+            conversation: conversationList[index],
+          ),
         ),
       ),
     ));

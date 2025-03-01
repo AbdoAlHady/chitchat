@@ -1,7 +1,7 @@
 import 'package:chitchat/core/errors/exceptions.dart';
 import 'package:chitchat/core/errors/failure.dart';
 import 'package:chitchat/features/messages/data/data_source/conversation_datasource.dart';
-import 'package:chitchat/features/messages/data/models/conversation_model.dart';
+import 'package:chitchat/features/messages/data/models/conversation_response.dart';
 import 'package:dartz/dartz.dart';
 
 class ConversationRepo {

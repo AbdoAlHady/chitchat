@@ -35,7 +35,12 @@ class LoginButton extends StatelessWidget {
               context: context,
               message: 'Login Successful',
               type: ToastType.success);
-          CacheHelper.setData(PrefsKeys.token, state.loginResponse!.token);
+          CacheHelper.setSecuredString(
+              PrefsKeys.token, state.loginResponse!.token);
+          context.pushNamedAndRemoveUntil(Routes.messagesScreen,
+              predicate: (Route<dynamic> route) {
+            return false;
+          });
         }
       },
       builder: (context, state) {
