@@ -6,4 +6,5 @@ abstract class ApiConstants {
   static const String resendEmailVerificationCode =
       "auth/resend-email-verification";
   static const String conversations = "conversations";
+  static const String messages = "messages";
 }

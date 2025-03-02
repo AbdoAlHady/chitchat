@@ -37,4 +37,9 @@ abstract class ApiService {
 
   @GET(ApiConstants.conversations)
   Future<ConversationResponse> getAllConversations();
+
+  @GET('${ApiConstants.messages}/{id}')
+  Future<MessageResponse> getMessages(
+    @Path('id') String conversationId,
+  );
 }
