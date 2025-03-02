@@ -6,6 +6,7 @@ import 'package:chitchat/features/auth/data/models/message_response.dart';
 import 'package:chitchat/features/auth/data/models/resend_email_verification_request_body.dart';
 import 'package:chitchat/features/auth/data/models/verify_email_request_body.dart';
 import 'package:chitchat/features/conversations/data/models/conversation_response.dart';
+import 'package:chitchat/features/messages/data/models/message_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
@@ -39,7 +40,7 @@ abstract class ApiService {
   Future<ConversationResponse> getAllConversations();
 
   @GET('${ApiConstants.messages}/{id}')
-  Future<MessageResponse> getMessages(
+  Future<MessagesResponse> getMessages(
     @Path('id') String conversationId,
   );
 }

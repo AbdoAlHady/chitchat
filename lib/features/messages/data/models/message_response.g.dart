@@ -6,14 +6,14 @@ part of 'message_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MessageResponse _$MessageResponseFromJson(Map<String, dynamic> json) =>
-    MessageResponse(
+MessagesResponse _$MessagesResponseFromJson(Map<String, dynamic> json) =>
+    MessagesResponse(
       data: (json['data'] as List<dynamic>)
           .map((e) => MessageDataModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$MessageResponseToJson(MessageResponse instance) =>
+Map<String, dynamic> _$MessagesResponseToJson(MessagesResponse instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
