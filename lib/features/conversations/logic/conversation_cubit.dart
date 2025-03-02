@@ -1,6 +1,6 @@
 import 'package:chitchat/core/enums/state_type.dart';
-import 'package:chitchat/features/messages/data/models/conversation_response.dart';
-import 'package:chitchat/features/messages/data/repos/conversation_repo.dart';
+import 'package:chitchat/features/conversations/data/models/conversation_response.dart';
+import 'package:chitchat/features/conversations/data/repos/conversation_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

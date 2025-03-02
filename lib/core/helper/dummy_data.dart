@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 
-import '../../features/messages/data/models/conversation_response.dart';
+import '../../features/conversations/data/models/conversation_response.dart';
 
 List<ConversationModel> generateRandomConversations(int count) {
   final faker = Faker();

@@ -1,6 +1,6 @@
 import 'package:chitchat/core/theme/app_colors.dart';
-import 'package:chitchat/features/messages/data/models/conversation_response.dart';
-import 'package:chitchat/features/messages/presentations/widgets/message_tile.dart';
+import 'package:chitchat/features/conversations/data/models/conversation_response.dart';
+import 'package:chitchat/features/conversations/presentations/widgets/message_tile.dart';
 import 'package:flutter/material.dart';
 
 class MessagesListViewItem extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:chitchat/features/chat/presentation/widgets/chat_screen_body.dart';
+import 'package:chitchat/features/messages/presentation/widgets/chat_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

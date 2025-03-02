@@ -1,7 +1,7 @@
 import 'package:chitchat/core/di/service_locator.dart';
-import 'package:chitchat/features/messages/data/repos/conversation_repo.dart';
-import 'package:chitchat/features/messages/logic/conversation_cubit.dart';
-import 'package:chitchat/features/messages/presentations/widgets/messages_screen_body.dart';
+import 'package:chitchat/features/conversations/data/repos/conversation_repo.dart';
+import 'package:chitchat/features/conversations/logic/conversation_cubit.dart';
+import 'package:chitchat/features/conversations/presentations/widgets/messages_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

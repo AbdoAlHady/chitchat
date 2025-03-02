@@ -1,6 +1,6 @@
 import 'package:chitchat/core/routing/routes.dart';
 import 'package:chitchat/core/utils/extensions.dart';
-import 'package:chitchat/features/messages/data/models/conversation_response.dart';
+import 'package:chitchat/features/conversations/data/models/conversation_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';

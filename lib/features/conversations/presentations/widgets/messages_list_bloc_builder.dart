@@ -1,6 +1,6 @@
-import 'package:chitchat/features/messages/logic/conversation_cubit.dart';
-import 'package:chitchat/features/messages/presentations/widgets/messages_list_view_item.dart';
-import 'package:chitchat/features/messages/presentations/widgets/messages_list_view_loading.dart';
+import 'package:chitchat/features/conversations/logic/conversation_cubit.dart';
+import 'package:chitchat/features/conversations/presentations/widgets/messages_list_view_item.dart';
+import 'package:chitchat/features/conversations/presentations/widgets/messages_list_view_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

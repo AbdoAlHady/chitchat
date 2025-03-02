@@ -2,8 +2,8 @@ import 'package:chitchat/core/routing/routes.dart';
 import 'package:chitchat/features/auth/ui/screens/login_screen.dart';
 import 'package:chitchat/features/auth/ui/screens/register_screen.dart';
 import 'package:chitchat/features/auth/ui/screens/verify_email_screen.dart';
-import 'package:chitchat/features/chat/presentation/chat_screen.dart';
-import 'package:chitchat/features/messages/presentations/messages_screen.dart';
+import 'package:chitchat/features/messages/presentation/chat_screen.dart';
+import 'package:chitchat/features/conversations/presentations/messages_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {

@@ -1,5 +1,5 @@
-import 'package:chitchat/features/chat/presentation/widgets/chat_input.dart';
-import 'package:chitchat/features/chat/presentation/widgets/chat_item.dart';
+import 'package:chitchat/features/messages/presentation/widgets/chat_input.dart';
+import 'package:chitchat/features/messages/presentation/widgets/chat_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

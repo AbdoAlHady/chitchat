@@ -1,4 +1,4 @@
-import 'package:chitchat/features/messages/presentations/widgets/recent_contacts_item.dart';
+import 'package:chitchat/features/conversations/presentations/widgets/recent_contacts_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

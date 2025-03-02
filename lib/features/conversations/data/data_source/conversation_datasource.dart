@@ -4,7 +4,7 @@ import 'package:chitchat/core/errors/exceptions.dart';
 import 'package:chitchat/core/helper/connection_helper.dart';
 import 'package:chitchat/core/network/api_service.dart';
 import 'package:chitchat/core/network/error_handler.dart';
-import 'package:chitchat/features/messages/data/models/conversation_response.dart';
+import 'package:chitchat/features/conversations/data/models/conversation_response.dart';
 
 class ConversationDatasource {
   final ApiService _service;
