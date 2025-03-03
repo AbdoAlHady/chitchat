@@ -1,5 +1,6 @@
 import 'package:chitchat/app.dart';
 import 'package:chitchat/core/di/service_locator.dart';
+import 'package:chitchat/core/services/socket_service.dart';
 import 'package:chitchat/core/utils/app_bloc_observer.dart';
 import 'package:chitchat/core/utils/cache_helper.dart';
 import 'package:chitchat/core/utils/prefs_keys.dart';
@@ -10,6 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
   await checkIfLoggedInUser();
+  await SocketService().initSocket();
   Bloc.observer = AppBlocObserver();
   runApp(const ChitChatApp());
 }

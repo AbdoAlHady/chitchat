@@ -13,7 +13,7 @@ class MessageTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        context.pushNamed(Routes.chatScreen);
+        context.pushNamed(Routes.chatScreen, arguments: conversation.id);
       },
       contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
       leading: CircleAvatar(

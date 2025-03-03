@@ -20,6 +20,7 @@ Map<String, dynamic> _$MessagesResponseToJson(MessagesResponse instance) =>
 
 MessageDataModel _$MessageDataModelFromJson(Map<String, dynamic> json) =>
     MessageDataModel(
+      id: json['id'] as String,
       conversationId: json['conversation_id'] as String,
       senderId: json['sender_id'] as String,
       createdAt: json['created_at'] as String,
@@ -28,6 +29,7 @@ MessageDataModel _$MessageDataModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MessageDataModelToJson(MessageDataModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'conversation_id': instance.conversationId,
       'sender_id': instance.senderId,
       'created_at': instance.createdAt,

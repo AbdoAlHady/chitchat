@@ -37,6 +37,7 @@ class LoginButton extends StatelessWidget {
               type: ToastType.success);
           CacheHelper.setSecuredString(
               PrefsKeys.token, state.loginResponse!.token);
+          CacheHelper.setData(PrefsKeys.userId, state.loginResponse?.data.id);
           context.pushNamedAndRemoveUntil(Routes.messagesScreen,
               predicate: (Route<dynamic> route) {
             return false;

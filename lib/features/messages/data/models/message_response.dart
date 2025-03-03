@@ -12,6 +12,7 @@ class MessagesResponse {
 
 @JsonSerializable()
 class MessageDataModel {
+  final String id;
   @JsonKey(name: 'conversation_id')
   final String conversationId;
   @JsonKey(name: 'sender_id')
@@ -21,6 +22,7 @@ class MessageDataModel {
   final String content;
 
   MessageDataModel({
+    required this.id,
     required this.conversationId,
     required this.senderId,
     required this.createdAt,

@@ -15,7 +15,10 @@ class AppRouter {
       case Routes.messagesScreen:
         return MaterialPageRoute(builder: (_) => MessagesScreen());
       case Routes.chatScreen:
-        return MaterialPageRoute(builder: (_) => ChatScreen());
+        return MaterialPageRoute(
+            builder: (_) => ChatScreen(
+                  conversationId: args as String,
+                ));
       case Routes.registerScreen:
         return MaterialPageRoute(builder: (_) => RegisterScreen());
       case Routes.loginScreen:
