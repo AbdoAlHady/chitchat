@@ -39,7 +39,9 @@ class ChatScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: ChatScreenBody(),
+        body: ChatScreenBody(
+          conversationId: conversationId,
+        ),
       ),
     );
   }

@@ -15,29 +15,31 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
   final MessagesRepo _repo;
 
   final SocketService _socketService = SocketService();
-  MessagesBloc(this._repo) : super(MessagesInitial()) {
+  MessagesBloc(this._repo) : super(MessagesLoadingState(messages: [])) {
     on<GetAllMessagesEvent>(_getAllMessages);
     on<SendMessageEvent>(_sendMessage);
     on<ReciveMessageEvent>(_reciveMessage);
   }
 
   FutureOr<void> _getAllMessages(event, emit) async {
-    emit(MessagesLoading());
+    emit(MessagesLoadingState(messages: state.messages));
     final result =
         await _repo.getMessages(conversationId: event.conversationId);
-    result.fold((failure) => {emit(MessagesError(message: failure.message))},
-        (messages) {
-      emit(MessagesSuccess(messages: messages));
+    result
+        .fold((failure) => {emit(MessagesErrorState(message: failure.message))},
+            (messages) {
+      emit(MessagesSuccessState(messages: messages));
       _socketService.socket.emit('joinConversation', event.conversationId);
       _socketService.socket.on('newMessage', (data) {
-        add(ReciveMessageEvent(message: data));
+        log(data.toString());
+        add(ReciveMessageEvent(message: data as Map<String, dynamic>));
       });
     });
   }
 
   FutureOr<void> _sendMessage(
       SendMessageEvent event, Emitter<MessagesState> emit) async {
-    final userId = CacheHelper.getData(PrefsKeys.userId);
+    final userId = await CacheHelper.getSecuredString(PrefsKeys.userId);
     final message = {
       'conversationId': event.conversationId,
       'senderId': userId,
@@ -50,6 +52,6 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
       ReciveMessageEvent event, Emitter<MessagesState> emit) {
     log(event.message.toString());
     final MessageDataModel message = MessageDataModel.fromJson(event.message);
-    emit(MessagesSuccess(messages: [...?state.messages, message]));
+    emit(MessagesSuccessState(messages: [...?state.messages, message]));
   }
 }

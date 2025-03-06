@@ -4,3 +4,4 @@ abstract class PrefsKeys {
 }
 
 bool isLoggedInUser = false;
+String userId = '';
